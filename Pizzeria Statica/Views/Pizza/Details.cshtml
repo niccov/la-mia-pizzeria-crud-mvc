@@ -16,6 +16,12 @@
     <button type="button" class="btn btn-primary mt-3">
         <a class="text-decoration-none text-reset" href="@Url.Action("Update","Pizza", new{id=Model.Id})">Modifica</a>
     </button>
+    
+    <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary mt-3">Elimina</button>
+    </form>
+
     <button type="button" class="btn btn-primary mt-3">
         <a class="text-decoration-none text-reset" href="@Url.Action("Index","Pizza")">Torna alle pizze</a>
     </button>

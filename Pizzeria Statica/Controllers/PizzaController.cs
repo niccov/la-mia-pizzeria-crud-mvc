@@ -119,6 +119,28 @@ namespace Pizzeria_Statica.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                Pizza pizzaDaEliminare = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+                if (pizzaDaEliminare != null)
+                {
+                    db.Pizze.Remove(pizzaDaEliminare);
+
+                    db.SaveChanges(); 
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+        }
+
 
     }
 }
