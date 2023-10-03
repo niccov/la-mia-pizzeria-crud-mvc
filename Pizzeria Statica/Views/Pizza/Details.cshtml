@@ -1,4 +1,7 @@
-﻿@model Pizza
+﻿@{
+    Layout = "_Layout";
+}
+@model Pizza
 
 <div class="container mx-auto p-2 d-flex flex-column align-items-center" style="width: 200px;">
     <div class="card" style="width: 18rem;">
@@ -10,6 +13,9 @@
         <img src="@Model.Foto" class="card-img-top" alt="...">
     </div>
 
+    <button type="button" class="btn btn-primary mt-3">
+        <a class="text-decoration-none text-reset" href="@Url.Action("Update","Pizza", new{id=Model.Id})">Modifica</a>
+    </button>
     <button type="button" class="btn btn-primary mt-3">
         <a class="text-decoration-none text-reset" href="@Url.Action("Index","Pizza")">Torna alle pizze</a>
     </button>

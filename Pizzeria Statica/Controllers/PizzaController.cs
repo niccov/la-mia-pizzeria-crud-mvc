@@ -70,5 +70,55 @@ namespace Pizzeria_Statica.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+
+            using (PizzeriaContext db =  new PizzeriaContext())
+            {
+                Pizza? pizzaDaModificare = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+                if (pizzaDaModificare == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return View(pizzaDaModificare);
+                }
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id,  Pizza pizza)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View("Update", pizza);
+            }
+
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                Pizza? pizzaDaModificare = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+                if(pizzaDaModificare != null)
+                {
+                    pizzaDaModificare.Nome = pizza.Nome;
+                    pizzaDaModificare.Descrizione = pizza.Descrizione;
+                    pizzaDaModificare.Prezzo = pizza.Prezzo;
+                    pizzaDaModificare.Foto = pizza.Foto;
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+        }
+
+
     }
 }
