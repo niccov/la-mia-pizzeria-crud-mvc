@@ -1,6 +1,6 @@
 ﻿@model Pizza
 
-<div class="container mx-auto p-2" style="width: 200px;">
+<div class="container mx-auto p-2 d-flex flex-column align-items-center" style="width: 200px;">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">@Model.Nome</h5>
@@ -9,4 +9,10 @@
         </div>
         <img src="@Model.Foto" class="card-img-top" alt="...">
     </div>
+
+    <button type="button" class="btn btn-primary mt-3">
+        <a class="text-decoration-none text-reset" href="@Url.Action("Index","Pizza")">Torna alle pizze</a>
+    </button>
 </div>
+
+

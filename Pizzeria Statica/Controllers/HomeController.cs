@@ -1,4 +1,4 @@
-﻿sing Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Pizzeria_Statica.Models;
 using System.Diagnostics;
 

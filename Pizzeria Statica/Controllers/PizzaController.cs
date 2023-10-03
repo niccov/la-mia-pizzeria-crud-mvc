@@ -43,5 +43,32 @@ namespace Pizzeria_Statica.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View("Create");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Pizza newPizza)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", newPizza);
+            }
+            using (PizzeriaContext context = new PizzeriaContext())
+            {
+                Pizza PizzaToCreate = new Pizza();
+                PizzaToCreate.Nome = newPizza.Nome;
+                PizzaToCreate.Descrizione = newPizza.Descrizione;
+                PizzaToCreate.Prezzo = newPizza.Prezzo;
+                PizzaToCreate.Foto = newPizza.Foto;
+                context.Pizze.Add(PizzaToCreate);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
