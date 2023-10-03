@@ -25,8 +25,16 @@ namespace Pizzeria_Statica.Models
 
         [Column("prezzo")]
         public float? Prezzo { get; set; }
-        
 
+        public Pizza() { }
+        public Pizza(int id, string nome, string? descrizione, float? prezzo, string? foto)
+        {   
+            Id = id;
+            Nome = nome;
+            Descrizione = descrizione;
+            Prezzo = prezzo;
+            Foto = Foto;
+        }
 
     }
 }

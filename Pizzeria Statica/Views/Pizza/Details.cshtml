@@ -1,0 +1,12 @@
+﻿@model Pizza
+
+<div class="container mx-auto p-2" style="width: 200px;">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Nome</h5>
+            <p class="card-text">@Model.Descrizione</p>
+            <p class="card-text">@Model.Prezzo</p>
+        </div>
+        <img src="@Model.Foto" class="card-img-top" alt="...">
+    </div>
+</div>
