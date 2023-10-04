@@ -14,6 +14,17 @@
             <img src="@Model.Foto" alt="...">
          </div>
         <p style="margin-top: 10px; font-size: 18px; font-family: cursive;">@Model.Descrizione</p>
+        <p style="margin-top: 10px; font-size: 18px; font-family: cursive;">
+            <strong>Categoria:</strong>
+            @if (Model.Categoria != null)
+            {
+                @Model.Categoria.Name
+            }
+            else
+            {
+                <span>Nessuna categoria</span>
+            }
+        </p>
         <p style="font-family: cursive; font-size: 18px;">@Model.Prezzo€</p>
        
          <div class="container-buttons">

@@ -33,7 +33,7 @@ namespace Pizzeria_Statica.Models
 
         //relazione Categoria
         public int? categoriaId { get; set; }
-        public Categoria? categoria { get; set; }
+        public Categoria? Categoria { get; set; }
 
         public Pizza() { }
 
@@ -43,7 +43,7 @@ namespace Pizzeria_Statica.Models
             Nome = nome;
             Descrizione = descrizione;
             Prezzo = prezzo;
-            Foto = Foto;
+            Foto = foto;
         }
 
     }

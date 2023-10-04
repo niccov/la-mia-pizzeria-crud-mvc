@@ -40,7 +40,17 @@
                              <div class="descrizione-pizza">
                                   <p><b>@pizza.Descrizione</b></p>
                              </div>
-                             <div class="prezzo-pizza">
+                             @* <div class="dettagli">
+                                @if (pizza.categoriaId != null)
+                                {
+                                    <span>@pizza.Categoria.Name</span>
+                                }
+                                else
+                                {
+                                    <span>Nessuna</span>
+                                }
+                             </div>   *@
+                             <div class="dettagli">
                                   <p>@pizza.Prezzo€</p>
                              </div>
                              <div>
