@@ -7,6 +7,13 @@ namespace Pizzeria_Statica.Controllers
 {
     public class PizzaController : Controller
     {
+        private PizzeriaContext _myDatabase;
+
+        public PizzaController(PizzeriaContext db)
+        {
+            _myDatabase = db;
+        }
+
         public IActionResult Index()
         {
             List<Pizza> pizze = new List<Pizza>();
@@ -47,28 +54,43 @@ namespace Pizzeria_Statica.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("Create");
+            using (PizzeriaContext context = new PizzeriaContext())
+            {
+                List<Categoria> categorie = context.Categorie.ToList();
+
+                PizzaFormModel model = new PizzaFormModel();
+                model.Pizza = new Pizza();
+                model.Categorie = categorie;
+
+                return View("Create", model);
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pizza newPizza)
+        public IActionResult Create(PizzaFormModel data)
         {
             if (!ModelState.IsValid)
             {
-                return View("Create", newPizza);
+                List<Categoria> categorie = data.Categorie.ToList();
+                data.Categorie = categorie;
+
+                return View("Create", data);
             }
-            using (PizzeriaContext context = new PizzeriaContext())
-            {
-                Pizza PizzaToCreate = new Pizza();
-                PizzaToCreate.Nome = newPizza.Nome;
-                PizzaToCreate.Descrizione = newPizza.Descrizione;
-                PizzaToCreate.Prezzo = newPizza.Prezzo;
-                PizzaToCreate.Foto = newPizza.Foto;
-                context.Pizze.Add(PizzaToCreate);
-                context.SaveChanges();
+            //using (PizzeriaContext context = new PizzeriaContext())
+            //{
+            ////    Pizza PizzaToCreate = new Pizza();
+            ////    PizzaToCreate.Nome = newPizza.Nome;
+            ////    PizzaToCreate.Descrizione = newPizza.Descrizione;
+            ////    PizzaToCreate.Prezzo = newPizza.Prezzo;
+            ////    PizzaToCreate.Foto = newPizza.Foto;
+            ////    context.Pizze.Add(PizzaToCreate);
+            ////    context.SaveChanges();
+            _myDatabase.Pizze.Add(data.Pizza);
+            _myDatabase.SaveChanges();
+           
                 return RedirectToAction("Index");
-            }
+            //}
         }
 
         [HttpGet]

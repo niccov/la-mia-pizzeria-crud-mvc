@@ -3,28 +3,40 @@
 }
 @model Pizza
 
-<div class="container mx-auto p-2 d-flex flex-column align-items-center" style="width: 200px;">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">@Model.Nome</h5>
-            <p class="card-text">@Model.Descrizione</p>
-            <p class="card-text">@Model.Prezzo</p>
-        </div>
-        <img src="@Model.Foto" class="card-img-top" alt="...">
+@* Style *@
+<link rel="stylesheet" href="~/css/DetailsStyle.css" /> 
+
+<div class="container-details">
+    <div class="card-pizza">
+
+        <h3 style="font-family: cursive;"><b>@Model.Nome</b></h3>
+        <div class="container-img-pizza">
+            <img src="@Model.Foto" alt="...">
+         </div>
+        <p style="margin-top: 10px; font-size: 18px; font-family: cursive;">@Model.Descrizione</p>
+        <p style="font-family: cursive; font-size: 18px;">@Model.Prezzo€</p>
+       
+         <div class="container-buttons">
+            <button type="button" class="button">
+                <a class="link-button" href="@Url.Action("Update","Pizza", new{id=Model.Id})">Modifica</a>
+            </button>
+        
+            <div class="button-delete">
+                <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="link-button-delete">Elimina</button>
+                </form>
+            </div>
+         </div>
+    
+         <div class="container-button-home">
+            <button type="button" class="button">
+                <a class="link-button" href="@Url.Action("Index","Pizza")">Torna alle pizze</a>
+            </button>
+         </div>
     </div>
 
-    <button type="button" class="btn btn-primary mt-3">
-        <a class="text-decoration-none text-reset" href="@Url.Action("Update","Pizza", new{id=Model.Id})">Modifica</a>
-    </button>
     
-    <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@Model.Id" method="post">
-        @Html.AntiForgeryToken()
-        <button type="submit" class="btn btn-primary mt-3">Elimina</button>
-    </form>
-
-    <button type="button" class="btn btn-primary mt-3">
-        <a class="text-decoration-none text-reset" href="@Url.Action("Index","Pizza")">Torna alle pizze</a>
-    </button>
 </div>
 
 

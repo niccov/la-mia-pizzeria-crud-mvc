@@ -1,0 +1,63 @@
+
+body {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU2EDJWdE85sc1F4C9j62OGVGyU0y5fgab5w&usqp=CAU);
+}
+
+.button-create {
+    background-color: white;
+    border-radius: 7px;
+    border: 2px solid #085569;
+    padding: 12px 40px;
+}
+
+.link-button-create {
+    text-decoration: none;
+    color: #085569;
+    font-size: 18px;
+}
+
+.card-pizza{
+    min-height: 150px;
+    min-width: 330px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.nome-pizza {
+    padding: 15px;
+    font-family: cursive;
+}
+
+.container-img-pizza{
+   height: 250px;
+}
+
+img{
+   height: 100%;
+}
+
+.descrizione-pizza {
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: cursive;
+}
+
+.prezzo-pizza {
+    font-family: cursive;
+    font-size: 18px;
+}
+
+.button {
+    background-color: #085569;
+
+    border-radius: 7px;
+    border-style: none;
+
+    padding: 4px 18px;
+}
+
+.link-button {
+    color: white;
+    text-decoration: none;
+}

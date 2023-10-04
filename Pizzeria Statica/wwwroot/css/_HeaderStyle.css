@@ -1,0 +1,21 @@
+﻿nav {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 0px;
+}
+
+h2 {
+    color: #085569;
+}
+.link-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.link{
+    text-decoration: none;
+}

@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Pizzeria_Statica</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Pizzeria_Statica.styles.css" asp-append-version="true" />
+    
 </head>
 <body>
     @Html.Partial("_Header")
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    
+    <main role="main" class="main-container" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU2EDJWdE85sc1F4C9j62OGVGyU0y5fgab5w&usqp=CAU);">
             @RenderBody()
-        </main>
-    </div>
+    </main>
+  
 
     @Html.Partial("_Footer")
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

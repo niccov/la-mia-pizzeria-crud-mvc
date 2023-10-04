@@ -6,6 +6,7 @@ namespace Pizzeria_Statica.Database
     public class PizzeriaContext :DbContext
     {
         public DbSet<Pizza> Pizze { get; set; }
+        public DbSet<Categoria> Categorie { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

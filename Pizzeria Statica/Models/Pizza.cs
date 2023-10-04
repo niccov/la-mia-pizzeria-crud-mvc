@@ -31,6 +31,10 @@ namespace Pizzeria_Statica.Models
         [Required(ErrorMessage = "Il campo è obbligatorio")]
         public float? Prezzo { get; set; }
 
+        //relazione Categoria
+        public int? IdCategoria { get; set; }
+        public Categoria? categoria { get; set; }
+
         public Pizza() { }
 
         public Pizza(int id, string nome, string? descrizione, float? prezzo, string? foto)
