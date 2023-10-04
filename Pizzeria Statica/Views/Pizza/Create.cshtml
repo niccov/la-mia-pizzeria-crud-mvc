@@ -17,12 +17,12 @@
             </div>
 
             <div class="mb-3">
-                <strong>Categoria:</strong>
-                <select asp-for="Pizza.IdCategoria" rows="10" class="d-block w-100">
+                <p class="label">Categoria:</p>
+                <select asp-for="Pizza.categoriaId" rows="10" class="d-block w-100">
                     <option value=""></option>
                     @foreach (Categoria categoria in Model.Categorie)
                     {
-                        @if (Model.Pizza.IdCategoria == categoria.Id)
+                        @if (Model.Pizza.categoriaId == categoria.Id)
                         {
                             <option value="@categoria.Id" selected>@categoria.Name</option>
                         }

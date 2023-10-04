@@ -51,7 +51,7 @@ namespace Pizzeria_Statica.Migrations
                 oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "IdCategoria",
+                name: "categoriaId",
                 table: "pizzas",
                 type: "int",
                 nullable: true);
@@ -103,7 +103,7 @@ namespace Pizzeria_Statica.Migrations
                 table: "pizzas");
 
             migrationBuilder.DropColumn(
-                name: "IdCategoria",
+                name: "categoriaId",
                 table: "pizzas");
 
             migrationBuilder.DropColumn(

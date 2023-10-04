@@ -32,7 +32,7 @@ namespace Pizzeria_Statica.Models
         public float? Prezzo { get; set; }
 
         //relazione Categoria
-        public int? IdCategoria { get; set; }
+        public int? categoriaId { get; set; }
         public Categoria? categoria { get; set; }
 
         public Pizza() { }

@@ -62,7 +62,7 @@ namespace Pizzeria_Statica.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("foto");
 
-                    b.Property<int?>("IdCategoria")
+                    b.Property<int?>("categoriaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")

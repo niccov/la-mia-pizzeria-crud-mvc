@@ -7,12 +7,12 @@ namespace Pizzeria_Statica.Controllers
 {
     public class PizzaController : Controller
     {
-        private PizzeriaContext _myDatabase;
+        //private PizzeriaContext _myDatabase;
 
-        public PizzaController(PizzeriaContext db)
-        {
-            _myDatabase = db;
-        }
+        //public PizzaController(PizzeriaContext db)
+        //{
+        //    _myDatabase = db;
+        //}
 
         public IActionResult Index()
         {
@@ -72,25 +72,28 @@ namespace Pizzeria_Statica.Controllers
         {
             if (!ModelState.IsValid)
             {
-                List<Categoria> categorie = data.Categorie.ToList();
-                data.Categorie = categorie;
+                using (PizzeriaContext context = new PizzeriaContext())
+                {
+                    List<Categoria> categorie = context.Categorie.ToList();
+                    data.Categorie = categorie;
 
-                return View("Create", data);
+                    return View("Create", data);
+                }
+                
             }
-            //using (PizzeriaContext context = new PizzeriaContext())
-            //{
-            ////    Pizza PizzaToCreate = new Pizza();
-            ////    PizzaToCreate.Nome = newPizza.Nome;
-            ////    PizzaToCreate.Descrizione = newPizza.Descrizione;
-            ////    PizzaToCreate.Prezzo = newPizza.Prezzo;
-            ////    PizzaToCreate.Foto = newPizza.Foto;
-            ////    context.Pizze.Add(PizzaToCreate);
-            ////    context.SaveChanges();
-            _myDatabase.Pizze.Add(data.Pizza);
-            _myDatabase.SaveChanges();
+            using (PizzeriaContext context = new PizzeriaContext())
+            {
+                Pizza PizzaToCreate = new Pizza();
+                PizzaToCreate.Nome = data.Pizza.Nome;
+                PizzaToCreate.Descrizione = data.Pizza.Descrizione;
+                PizzaToCreate.Prezzo = data.Pizza.Prezzo;
+                PizzaToCreate.Foto = data.Pizza.Foto;
+                PizzaToCreate.categoriaId = data.Pizza.categoriaId;
+                context.Pizze.Add(PizzaToCreate);
+                context.SaveChanges();
            
                 return RedirectToAction("Index");
-            //}
+            }
         }
 
         [HttpGet]
