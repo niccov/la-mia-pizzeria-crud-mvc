@@ -16,7 +16,7 @@ namespace Pizzeria_Statica.Controllers
             {
                 using (PizzeriaContext db = new PizzeriaContext())
                 {
-                    pizze = db.Pizze.ToList<Pizza>();
+                    pizze = db.Pizze.Include(pizza => pizza.Categoria).ToList<Pizza>();
                     return View("Index", pizze);
 
                 }
