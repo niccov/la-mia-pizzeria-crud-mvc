@@ -7,6 +7,7 @@ namespace Pizzeria_Statica.Database
     {
         public DbSet<Pizza> Pizze { get; set; }
         public DbSet<Categoria> Categorie { get; set; }
+        public DbSet<Ingrediente> Ingredienti { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

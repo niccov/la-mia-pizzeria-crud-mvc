@@ -10,10 +10,13 @@
     <div class="card-pizza">
 
         <h3 style="font-family: cursive;"><b>@Model.Nome</b></h3>
+
         <div class="container-img-pizza">
             <img src="@Model.Foto" alt="...">
          </div>
+
         <p style="margin-top: 10px; font-size: 18px; font-family: cursive;">@Model.Descrizione</p>
+
         <p style="margin-top: 10px; font-size: 18px; font-family: cursive;">
             <strong>Categoria:</strong>
             @if (Model.Categoria != null)
@@ -25,6 +28,27 @@
                 <span>Nessuna categoria</span>
             }
         </p>
+
+        <p style="margin-top: 10px; font-size: 18px; font-family: cursive;">
+
+            <strong>Ingredienti</strong>
+
+            @if (Model.Ingredienti != null && Model.Ingredienti.Count > 0)
+            {
+                <ul>
+                    @foreach (Ingrediente ingrediente in Model.Ingredienti)
+                    {
+                        <li>@ingrediente.Name</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>Non hai ancora ingredienti associati! </span>
+            }
+            
+        </p>
+
         <p style="font-family: cursive; font-size: 18px;">@Model.Prezzo€</p>
        
          <div class="container-buttons">

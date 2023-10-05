@@ -35,6 +35,10 @@ namespace Pizzeria_Statica.Models
         public int? categoriaId { get; set; }
         public Categoria? Categoria { get; set; }
 
+        //relazione N-N con Ingrediente
+        public List<Ingrediente>? Ingredienti { get; set; }
+
+
         public Pizza() { }
 
         public Pizza(int id, string nome, string? descrizione, float? prezzo, string? foto)

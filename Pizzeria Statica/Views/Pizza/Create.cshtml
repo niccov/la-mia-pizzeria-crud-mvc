@@ -35,6 +35,16 @@
             </div>
 
             <div class="mb-3">
+                <strong>Ingredienti:</strong>
+                <select asp-for="IngredientiSelezionatiId"
+                        multiple="multiple"
+                        size="10"
+                        class="label"
+                        asp-items="@Model.Ingredienti">
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label asp-for="Pizza.Descrizione" class="label">Descrizione</label>
                 <input asp-for="Pizza.Descrizione" type="text" class="form-control" id="Descrizione">
                 <span asp-validation-for="Pizza.Descrizione" class="text-danger"></span>

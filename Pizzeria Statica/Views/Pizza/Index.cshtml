@@ -32,14 +32,17 @@
                       <div class="card-pizza" style="width: 18rem;">
 
                              <div class="nome-pizza">
-                                 <h3>@pizza.Nome</h3>
+                                 <h4>@pizza.Nome</h4>
                              </div>
+
                              <div class="container-img-pizza">
                                   <img src="@pizza.Foto" class="card-img" alt="...">
                              </div>
+
                              <div class="descrizione-pizza">
                                   <p><b>@pizza.Descrizione</b></p>
                              </div>
+
                              <div class="dettagli">
                                 @if (pizza.Categoria != null)
                                 {
@@ -49,10 +52,16 @@
                                 {
                                     <span>Nessuna categoria</span>
                                 }
-                             </div>  
+                             </div>
+                           
                              <div class="dettagli">
                                   <p>@pizza.Prezzo€</p>
                              </div>
+
+                             <div class="ingredienti">
+                                 Per vedere gli ingredienti cliccare su dettagli
+                             </div>
+
                              <div>
                                   <button type="button" class="button">
                                       <a class="link-button" href="@Url.Action("Details","Pizza", new{id=pizza.Id})">Dettagli</a>
