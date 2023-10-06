@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Pizzeria_Statica.Database;
 namespace Pizzeria_Statica
 {
     public class Program
@@ -5,6 +8,11 @@ namespace Pizzeria_Statica
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<PizzeriaContext>();
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<PizzeriaContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -24,12 +32,15 @@ namespace Pizzeria_Statica
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Pizza}/{action=Index}/{id?}");
 
+            app.MapRazorPages();
             app.Run();
         }
     }

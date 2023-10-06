@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pizzeria_Statica.Database;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 
 namespace Pizzeria_Statica.Controllers
 {
+    [Authorize]
     public class PizzaController : Controller
     {
 

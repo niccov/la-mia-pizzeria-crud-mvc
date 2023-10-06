@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Pizzeria_Statica.Models;
 
 namespace Pizzeria_Statica.Database
 {
-    public class PizzeriaContext :DbContext
+    public class PizzeriaContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Pizza> Pizze { get; set; }
         public DbSet<Categoria> Categorie { get; set; }
