@@ -8,10 +8,10 @@ using System.Diagnostics;
 
 namespace Pizzeria_Statica.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "USER,ADMIN")]
     public class PizzaController : Controller
     {
-
+        [Authorize(Roles = "USER,ADMIN")]
         public IActionResult Index()
         {
             List<Pizza> pizze = new List<Pizza>();
@@ -32,6 +32,7 @@ namespace Pizzeria_Statica.Controllers
             }
         }
 
+        [Authorize(Roles = "USER,ADMIN")]
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -50,6 +51,7 @@ namespace Pizzeria_Statica.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -74,6 +76,7 @@ namespace Pizzeria_Statica.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PizzaFormModel data)
@@ -132,6 +135,7 @@ namespace Pizzeria_Statica.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -169,6 +173,7 @@ namespace Pizzeria_Statica.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id,  PizzaFormModel data)
@@ -238,6 +243,7 @@ namespace Pizzeria_Statica.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
